@@ -4,11 +4,27 @@ import store from '@/store'
 
 import App from './App.vue'
 
-// import widgets from './widgets'
+import ElementPlus from 'element-plus'
+import { sync } from 'vuex-router-sync'
+import GlobalComponents from '@/components'
+import Mixin from '@/mixins'
+import Widgets from '@/widgets'
 
+const app = createApp(App)
 
-createApp(App)
-  // .use(widgets)
+app
   .use(store)
   .use(router)
+
+sync(store, router)
+
+app
+  .use(ElementPlus, {
+    size: 'small'
+  })
+  .use(GlobalComponents)
+  .use(Widgets)
+  .use(Mixin)
   .mount('#app')
+
+export default app
