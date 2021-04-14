@@ -1,5 +1,8 @@
-import { createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+import routes from './routes'
 
-export default createWebHistory({
-  base: '/'
+export default createRouter({
+  base: '/',
+  history: createWebHistory(),
+  routes
 })

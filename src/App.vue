@@ -1,5 +1,5 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
+  啊实打实打算
 </template>
 
 <script setup>

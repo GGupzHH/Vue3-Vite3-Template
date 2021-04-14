@@ -18,6 +18,10 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/eslint-parser": "^7.13.8",
+    "@vue/cli-plugin-babel": "~4.5.11",
+    "@vue/eslint-config-standard": "^6.0.0",
     "eslint": "^7.21.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
