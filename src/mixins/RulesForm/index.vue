@@ -1,10 +1,16 @@
 <script>
+// import {
+//   requiredRules,
+//   validatorRules,
+//   imageListRules,
+//   requiredRadioRules
+// } from '@/utils/formRules'
 import {
   requiredRules,
   validatorRules,
   imageListRules,
   requiredRadioRules
-} from '@/utils/formRules'
+} from '../../utils/formRules'
 export default {
   methods: {
     getValidatorRules (...args) {

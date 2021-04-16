@@ -7,7 +7,8 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import DemoTestModule from '@/modules/DemoTest/store'
+// import DemoTestModule from '@/modules/DemoTest/store'
+import DemoTestModule from '../store'
 
 export default {
   name: 'Xx',

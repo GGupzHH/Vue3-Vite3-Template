@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import { ServiceLoading } from '@/widgets/loading'
+// import { ServiceLoading } from '@/widgets/loading'
 export default {
   mounted () {
     setTimeout(() => {
-      ServiceLoading.hide()
+      // ServiceLoading.hide()
     }, 3000)
   }
 }

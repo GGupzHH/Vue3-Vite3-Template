@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue'
-import Modal from '@/widgets/ModalPrompt/modal.vue'
+// import Modal from '@/widgets/ModalPrompt/modal.vue'
+import Modal from './modal.vue'
 
 let instance = {}
 
