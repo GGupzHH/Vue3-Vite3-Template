@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import { ServiceLoading } from '@/widgets/loading'
+// import { ServiceLoading } from '@/widgets/loading'
 export default {
   created () {
-    ServiceLoading.show({
-      background: '#fbfbfba1'
-    })
+    // ServiceLoading.show({
+    //   background: '#fbfbfba1'
+    // })
     setTimeout(() => {
       this.$router.push('/demo-test/hide')
     }, 5000)

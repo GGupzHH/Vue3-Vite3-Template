@@ -39,7 +39,8 @@
 
 <script>
 
-import { isString } from '@/utils/type'
+// import { isString } from '@/utils/type'
+import { isString } from '../../utils/type'
 
 export default {
   name: 'OptionsMenu',

@@ -1,7 +1,14 @@
-const Layout = () => import('@/components/Layout/index')
-const importModule = (filePath) => {
-  return () => import(`@/modules/${filePath}`)
-}
+// const Layout = () => import('@/components/Layout/index')
+// const importModule = (filePath) => {
+//   return () => import(`@/modules/${filePath}`)
+// }
+// import a from '../modules/DemoTest/pages/list'
+// import b from '../modules/DemoTest/pages/loading-show./vue'
+// import c from '../modules/DemoTest/pages/loading-hide.vue'
+const Layout = () => import('../components/Layout/index.vue')
+// const importModule = (filePath) => {
+//   return () => import(`../modules/${filePath}`)
+// }
 
 /**
  * 为渲染菜单添加的测试路由
@@ -27,7 +34,7 @@ const routes = [
       {
         path: 'list',
         name: 'DemoTestList',
-        component: importModule('DemoTest/pages/list'),
+        component: Layout,
         meta: {
           title: 'demo列表'
         }
@@ -35,7 +42,7 @@ const routes = [
       {
         path: 'show',
         name: 'DemoTestLoadingShow',
-        component: importModule('DemoTest/pages/loading-show'),
+        component: Layout,
         meta: {
           title: 'demo-loading-show'
         }
@@ -43,7 +50,7 @@ const routes = [
       {
         path: 'hide',
         name: 'DemoTestLoadingHide',
-        component: importModule('DemoTest/pages/loading-hide'),
+        component: Layout,
         meta: {
           title: 'demo-loading-hide'
         }
@@ -54,7 +61,8 @@ const routes = [
     path: '/:pathMatch(.*)*',
     name: '404',
     hiddenMenu: true,
-    component: () => import('@/components/404')
+    // component: () => import('@/components/404')
+    component: () => import('../components/404.vue')
   }
 ]
 export default routes

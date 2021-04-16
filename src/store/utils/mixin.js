@@ -1,4 +1,4 @@
-import { Message } from 'element-plus'
+import { ElMessage } from 'element-plus'
 
 export function filterResponse (res, successCb = null, errorCb = null) {
   return new Promise((resolve) => {
@@ -7,7 +7,7 @@ export function filterResponse (res, successCb = null, errorCb = null) {
     } else {
       errorCb
         ? errorCb(res)
-        : Message({
+        : ElMessage({
           type: 'error',
           message: res.msg,
           showClose: true

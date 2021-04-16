@@ -1,6 +1,9 @@
+// import {
+//   regexExtraSpace
+// } from '@/utils/regularExpression'
 import {
   regexExtraSpace
-} from '@/utils/regularExpression'
+} from './regularExpression'
 
 function validatorRules (validator, trigger = '', params) {
   const rule = {

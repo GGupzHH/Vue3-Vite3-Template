@@ -1,8 +1,10 @@
 import axios from 'axios'
 import Cookie from 'js-cookie'
 
-import { camelizeKeys, decamelizeKeys } from '@/utils/camelCase'
-import Router from '@/router/index'
+// import { camelizeKeys, decamelizeKeys } from '@/utils/camelCase'
+// import Router from '@/router/index'
+import { camelizeKeys, decamelizeKeys } from './camelCase'
+import Router from '../router/index'
 
 // redirect error
 function errorRedirect (url) {
@@ -29,10 +31,11 @@ const codeMessage = {
   504: '网关超时。'
 }
 
+console.log(import.meta.env)
 // 创建axios实例
 const service = axios.create({
   // api 的 base_url
-  baseURL: process.env.VUE_APP_BASE_API,
+  baseURL: import.meta.env.VITE_BASE_API,
   // 请求超时时间
   timeout: 15000
 })
