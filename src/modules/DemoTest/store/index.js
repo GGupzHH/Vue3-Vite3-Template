@@ -10,7 +10,9 @@ const DemoTestModule = {
   namespaced: true,
   _name: 'DemoTest',
   state: {
-    demoList: {}
+    demoList: {
+      name: 1
+    }
   },
   getters: {
     demoList: state => state.demoList

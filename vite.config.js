@@ -12,7 +12,7 @@ export default defineConfig({
   //       replacement: path.resolve(__dirname, 'src')
   //     }
   //   ]
-  // }
+  // },
   css: {
     preprocessorOptions: {
       scss: {
