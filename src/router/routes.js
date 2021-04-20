@@ -1,11 +1,6 @@
 import { defineAsyncComponent } from 'vue'
 
-const Layout = () => import('../components/Layout/index.vue')
-
-// 动态路由加载方式 defineAsyncComponent
-const importModule = (filePath) => {
-  return defineAsyncComponent(() => import(`../modules/${filePath}`))
-}
+const Layout = () => import('comps/Layout/index.vue')
 
 /**
  * 为渲染菜单添加的测试路由
@@ -32,7 +27,7 @@ const routes = [
       {
         path: 'list',
         name: 'DemoTestList',
-        component: importModule('DemoTest/pages/list.vue'),
+        component: () => import('modules/DemoTest/pages/list.vue'),
         meta: {
           title: 'demo列表'
         }
@@ -40,7 +35,7 @@ const routes = [
       {
         path: 'show',
         name: 'DemoTestLoadingShow',
-        component: importModule('DemoTest/pages/loading-show.vue'),
+        component: () => import('modules/DemoTest/pages/loading-show.vue'),
         meta: {
           title: 'demo-loading-show'
         }
@@ -48,7 +43,7 @@ const routes = [
       {
         path: 'hide',
         name: 'DemoTestLoadingHide',
-        component: importModule('DemoTest/pages/loading-hide.vue'),
+        component: () => import('modules/DemoTest/pages/loading-hide.vue'),
         meta: {
           title: 'demo-loading-hide'
         }
@@ -59,7 +54,7 @@ const routes = [
     path: '/:pathMatch(.*)*',
     name: '404',
     hiddenMenu: true,
-    component: defineAsyncComponent(() => import('../components/404.vue'))
+    component: defineAsyncComponent(() => import('comps/404.vue'))
   }
 ]
 export default routes

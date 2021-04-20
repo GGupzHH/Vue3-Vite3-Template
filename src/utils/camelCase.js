@@ -6,7 +6,7 @@ import {
   isRegExp,
   isBoolean,
   isNumberical
-} from './type'
+} from 'utils/type'
 
 // camelize('hello_world') -> 'helloWorld'
 export function camelize (string) {

@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import NavigationSideLogo from '@/components/Navigation/Side/SideLogo'
-import NavigationSideAction from '@/components/Navigation/Side/SideAction'
+import NavigationSideLogo from 'comps/Navigation/Side/SideLogo'
+import NavigationSideAction from 'comps/Navigation/Side/SideAction'
 
 export default {
   name: 'NavigationNavBar',

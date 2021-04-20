@@ -1,8 +1,8 @@
 // Vue Component Install
 // import IconFont from '@/components/IconFont'
 // import OptionsMenu from '@/components/OptionsMenu'
-import IconFont from './IconFont/index.vue'
-import OptionsMenu from './OptionsMenu/index.vue'
+import IconFont from 'comps/IconFont/index.vue'
+import OptionsMenu from 'comps/OptionsMenu/index.vue'
 
 const component = {
   install: function (app) {

@@ -1,5 +1,5 @@
 // import request from '@/utils/request'
-import request from '../../../utils/request'
+import request from 'utils/request'
 
 export function getDemoTestList (params) {
   return request({

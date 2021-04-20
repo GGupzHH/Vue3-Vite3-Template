@@ -45,7 +45,7 @@
 
 <script>
 
-import NavigationMenuBarItem from '@/components/Navigation/MenuBar/MenuBarItem'
+import NavigationMenuBarItem from 'comps/Navigation/MenuBar/MenuBarItem'
 
 import ElementVariables from '@/styles/element-variables.scss'
 

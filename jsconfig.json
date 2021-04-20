@@ -3,7 +3,14 @@
     "baseUrl": "./",
     "module": "commonjs",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "store/*": ["./src/store"],
+      "comps/*": ["./src/components"],
+      "utils/*": ["./src/utils"],
+      "modules/*": ["./src/modules/*"],
+      "router/*": ["./src/router/*"],
+      "widgets/*": ["./src/widgets/*"],
+      "mixins/*": ["./src/mixins/*"]
     }
   },
   "exclude": ["node_modules"]
