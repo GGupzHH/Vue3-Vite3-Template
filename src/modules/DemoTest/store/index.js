@@ -1,18 +1,17 @@
-// import { sleep } from '@/utils/request'
-// import { getDemoTestList } from '@/modules/DemoTest/api'
-// import MUTATION from '@/modules/DemoTest/store/mutations-type'
-// import mixin from '@/store/utils/mixin'
-import { getDemoTestList } from '../api'
-import MUTATION from './mutations-type'
-import mixin from '../../../store/utils/mixin'
+import { getDemoTestList } from 'modules/DemoTest/api'
+import MUTATION from 'modules/DemoTest/store/mutations-type'
+import mixin from 'store/utils/mixin'
 
 const DemoTestModule = {
   namespaced: true,
   _name: 'DemoTest',
   state: {
-    demoList: {
-      name: 1
-    }
+    demoList: [
+      1,
+      2,
+      3,
+      4
+    ]
   },
   getters: {
     demoList: state => state.demoList

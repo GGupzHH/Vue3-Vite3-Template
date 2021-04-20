@@ -3,7 +3,7 @@
 // } from '@/utils/regularExpression'
 import {
   regexExtraSpace
-} from './regularExpression'
+} from 'utils/regularExpression'
 
 function validatorRules (validator, trigger = '', params) {
   const rule = {

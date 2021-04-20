@@ -3,7 +3,7 @@
  */
 
 // import mounted from '@/store/plugins/mounted'
-import mounted from './mounted'
+import mounted from 'store/plugins/mounted'
 
 export default [
   mounted

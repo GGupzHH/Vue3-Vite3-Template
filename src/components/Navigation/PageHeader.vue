@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import NavigationNavBreadcrumb from '@/components/Navigation/NavBreadcrumb'
+import NavigationNavBreadcrumb from 'comps/Navigation/NavBreadcrumb'
 
 export default {
   name: 'NavigationPageHeader',

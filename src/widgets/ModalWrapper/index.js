@@ -2,7 +2,8 @@ import { defineComponent } from 'vue'
 
 // import Modal from '@/widgets/ModalWrapper/modal.vue'
 // import { modalCallbackList } from '@/widgets/ModalWrapper/data'
-import Modal from './modal.vue'
+import Modal from 'widgets/ModalWrapper/modal.vue'
+// import Modal from './modal.vue'
 import { modalCallbackList } from './data'
 
 let instance = null

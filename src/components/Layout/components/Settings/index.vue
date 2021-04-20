@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import ThemePocker from '@/components/ThemePicker'
+import ThemePocker from 'comps/ThemePicker'
 export default {
   name: 'RightPanel',
   components: {

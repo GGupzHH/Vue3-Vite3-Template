@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import NavigationMenuBar from '@/components/Navigation/MenuBar/index'
-import NavigationNavBar from '@/components/Navigation/NavBar'
-import NavigationPageHeader from '@/components/Navigation/PageHeader'
-import Settings from '@/components/Layout/components/Settings'
+import NavigationMenuBar from 'comps/Navigation/MenuBar/index'
+import NavigationNavBar from 'comps/Navigation/NavBar'
+import NavigationPageHeader from 'comps/Navigation/PageHeader'
+import Settings from 'comps/Layout/components/Settings'
 export default {
   name: 'LayoutBasic',
   components: {
