@@ -1,11 +1,9 @@
 <template>
   <div>
-    <h1
-      v-for="item in demoList"
-      :key="item"
-    >
-      {{ item }}
-    </h1>
+    <h1>日历组件</h1>
+    <Calendar
+      :year="2021"
+    />
   </div>
 </template>
 
