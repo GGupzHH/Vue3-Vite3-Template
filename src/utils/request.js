@@ -1,8 +1,6 @@
 import axios from 'axios'
 import Cookie from 'js-cookie'
 
-// import { camelizeKeys, decamelizeKeys } from '@/utils/camelCase'
-// import Router from '@/router/index'
 import { camelizeKeys, decamelizeKeys } from './camelCase'
 import Router from '../router/index'
 
@@ -31,7 +29,6 @@ const codeMessage = {
   504: '网关超时。'
 }
 
-console.log(import.meta.env)
 // 创建axios实例
 const service = axios.create({
   // api 的 base_url
@@ -46,7 +43,12 @@ service.interceptors.request.use(
     const token = Cookie.get('token')
 
     // Conversion of hump nomenclature
-    request.data = decamelizeKeys(request.data)
+    if (
+      !(request.data instanceof FormData)
+    ) {
+      request.data = decamelizeKeys(request.data)
+    }
+
     request.params = decamelizeKeys(request.params)
 
     /**
@@ -75,7 +77,33 @@ service.interceptors.response.use(
      *     error: 0      0 success | 1 error | 5000 failed | HTTP code
      *  }
      */
+
     const data = response.data
+    Promise.resolve().then(() => {
+      useResHeadersAPI(response.headers, data)
+    })
+
+    if (
+      response.request.responseType === 'blob' &&
+      /json$/gi.test(response.headers['content-type'])
+    ) {
+      return new Promise(resolve => {
+        const reader = new FileReader()
+        reader.onload = () => {
+          response.data = JSON.parse(reader.result)
+          resolve(camelizeKeys(response.data))
+        }
+
+        reader.readAsText(response.data)
+      })
+    } else if (data instanceof Blob) {
+      return {
+        data,
+        msg: '',
+        error: 0
+      }
+    }
+
     return camelizeKeys(data)
   },
   error => {
@@ -113,6 +141,65 @@ export function sleep (time = 0) {
       resolve({})
     }, time)
   })
+}
+
+function extractFileNameFromContentDispositionHeader (value) {
+  const patterns = [
+    /filename\*=[^']+'\w*'"([^"]+)";?/i,
+    /filename\*=[^']+'\w*'([^;]+);?/i,
+    /filename="([^;]*);?"/i,
+    /filename=([^;]*);?/i
+  ]
+
+  let responseFilename
+  patterns.some(regex => {
+    responseFilename = regex.exec(value)
+    return responseFilename !== null
+  })
+
+  if (responseFilename !== null && responseFilename.length > 1) {
+    try {
+      return decodeURIComponent(responseFilename[1])
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  return null
+}
+
+export function downloadFile (boldData, filename = 'shinewing', type) {
+  // TODO: https://blog.csdn.net/weixin_42142057/article/details/97655591
+  const blob = boldData instanceof Blob
+    ? boldData
+    : new Blob([boldData], { type })
+  const url = window.URL.createObjectURL(blob)
+
+  const link = document.createElement('a')
+  link.style.display = 'none'
+  link.href = url
+  link.download = filename
+  document.body.appendChild(link)
+
+  link.click()
+
+  document.body.removeChild(link)
+}
+
+export function useResHeadersAPI (headers, resData) {
+  const disposition = headers['content-disposition']
+  if (disposition) {
+    let filename = ''
+    /**
+     * TODO: See
+     * https://stackoverflow.com/a/40940790/13202554
+     *
+     * https://github.com/swagger-api/swagger-ui/blob/master/src/core/components/response-body.jsx#L80
+     */
+
+    filename = extractFileNameFromContentDispositionHeader(disposition)
+    filename && downloadFile(resData, filename, headers['content-type'])
+  }
 }
 
 export default service
