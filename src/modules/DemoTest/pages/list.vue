@@ -2,7 +2,12 @@
   <div>
     <h1>日历组件</h1>
     <Calendar
-      :year="2021"
+      :year="calendarCurrentYear"
+    />
+    <h1>日历组件-带区间日期高亮和指定日期错误的配置</h1>
+    <Calendar
+      :year="calendarCurrentYear"
+      :calendar-data="calendarData"
     />
   </div>
 </template>
@@ -12,7 +17,8 @@ import {
   defineComponent,
   computed,
   watch,
-  getCurrentInstance
+  getCurrentInstance,
+  reactive
 } from 'vue'
 import { useStore } from 'vuex'
 // import DemoTestModule from '@/modules/DemoTest/store'
@@ -31,12 +37,29 @@ export default defineComponent({
       /* --- */
     })
 
-    // this
-    const { ctx } = getCurrentInstance()
-    console.log(ctx)
+    // this  ctx并不能在生产环境使用
+    const { proxy } = getCurrentInstance()
+
+    const calendarCurrentYear = 2021 && new Date().getFullYear()
+
+    const calendarData = reactive({
+      errorDay: {
+        2021: {
+          4: [1, 2, 3, 5],
+          5: [9],
+          10: [3]
+        }
+      },
+      // 高亮日期时间段 这个时间段的年会被当做一年
+      startDay: '2021-03-11',
+      endDay: '2021-11-20'
+      // interval: 可能是多个时间段
+    })
 
     return {
-      demoList
+      demoList,
+      calendarCurrentYear,
+      calendarData
     }
   }
 })

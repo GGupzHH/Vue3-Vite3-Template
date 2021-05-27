@@ -1,5 +1,8 @@
 <template>
-  <div class="wrap-calendar-month">
+  <div
+    :key="year"
+    class="wrap-calendar-month"
+  >
     <h1 class="month-title">
       {{ currentMonth }}月
     </h1>
@@ -18,6 +21,10 @@
           v-for="(dayItem, datIndex) in monthList"
           :key="datIndex"
           class="month-day"
+          :class="{
+            'day-high-light': dayItem.content && startDay && filterDayHighLight(dayItem.content),
+            'day-high-light-error': dayItem.content && errorDay && filterDayHighLightError(dayItem.content)
+          }"
         >
           {{ dayItem.content }}
         </span>
@@ -28,13 +35,17 @@
 
 <script>
 import {
+  computed,
   defineComponent,
   getCurrentInstance,
-  reactive
+  reactive,
+  toRef,
+  toRefs,
+  watch
 } from 'vue'
 import { useStore } from 'vuex'
 
-const useCalendarMonth = (currentYear, currentMonth) => {
+const useCalendarMonth = (currentYear, currentMonth, startDay, endDay, errorDay) => {
   const week = reactive(['日', '一', '二', '三', '四', '五', '六'])
 
   const getCurrentMonthDays = (year, month) => {
@@ -75,12 +86,50 @@ const useCalendarMonth = (currentYear, currentMonth) => {
   // console.log('当前月多少天', currentMonthDays)
   // console.log('当前月第一天是周几', startWeek)
   // console.log('这个月', monthList)
+
+  const supplement = currentDay => {
+    return currentDay < 10 ? '0' + currentDay : currentDay
+  }
+
+  const filterDayHighLight = currentDay => {
+    // 补 0  因为 '2020-02-01'  和  '2020-2-1' 不相等
+    currentDay = supplement(currentDay)
+
+    // 拼接
+    const currentDateOf = currentYear + '-' + currentMonth + '-' + currentDay
+
+    // 判断是否是范围之内
+    return currentDateOf >= startDay.value && currentDateOf <= endDay.value
+  }
+
+  const filterDayHighLightError = currentDay => {
+    // console.log(errorDay)
+    // console.log(
+    //   currentYear,
+    //   currentMonth,
+    //   errorDay.value.hasOwnProperty(currentYear),
+    //   errorDay.value[currentYear],
+    //   errorDay.value[currentYear].hasOwnProperty(currentMonth))
+    const month = currentMonth - 0
+    if (
+      errorDay.value[currentYear] &&
+      errorDay.value[currentYear][month] &&
+      errorDay.value[currentYear][month].indexOf(currentDay) >= 0
+    ) {
+      return true
+    }
+    return false
+  }
+
   return {
     week,
     currentMonth,
-    monthList
+    monthList,
+    filterDayHighLight,
+    filterDayHighLightError
   }
 }
+
 export default defineComponent({
   name: 'CalendarMonth',
   props: {
@@ -89,19 +138,28 @@ export default defineComponent({
       default: new Date().getFullYear()
     },
     month: {
-      type: Number,
+      type: String,
       default: new Date().getMonth() + 1
+    },
+    calendarData: {
+      type: Object,
+      default: () => (reactive({}))
     }
   },
   setup (props) {
     // Vuex store
     const store = useStore()
 
-    // this
-    const { ctx } = getCurrentInstance()
+    const {
+      startDay,
+      endDay,
+      errorDay
+    } = toRefs(props.calendarData)
 
     return {
-      ...useCalendarMonth(props.year, props.month)
+      startDay,
+      errorDay,
+      ...useCalendarMonth(props.year, props.month, startDay, endDay, errorDay)
     }
   }
 })
@@ -138,6 +196,14 @@ export default defineComponent({
         width: 25px;
         height: 25px;
         color: #D7D7D7;
+      }
+      .day-high-light {
+        color: #323342;
+      }
+      .day-high-light-error {
+        background-color: #FEEDED;
+        color: #FF7272;
+        border-radius: 2px;
       }
     }
   }

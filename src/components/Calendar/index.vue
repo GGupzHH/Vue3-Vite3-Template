@@ -1,9 +1,13 @@
 <template>
-  <div class="wrap-year">
+  <div
+    :key="year"
+    class="wrap-year"
+  >
     <CalendarMonth
       v-for="month in months"
       :key="month"
       :month="month"
+      :year="year"
       v-bind="attrs"
     />
   </div>
@@ -12,10 +16,10 @@
 <script>
 import {
   defineComponent,
-  computed,
   getCurrentInstance,
-  ref
+  reactive
 } from 'vue'
+
 import { useStore } from 'vuex'
 import CalendarMonth from 'comps/Calendar/month/index.vue'
 export default defineComponent({
@@ -23,17 +27,35 @@ export default defineComponent({
   components: {
     CalendarMonth
   },
-  setup () {
+  props: {
+    year: {
+      type: Number,
+      default: new Date().getFullYear()
+    }
+  },
+  setup (props) {
     // Vuex store
     const store = useStore()
 
     // this
-    const { ctx } = getCurrentInstance()
-    console.log(ctx)
-    const attrs = computed(() => ctx.$attrs)
+    const { proxy } = getCurrentInstance()
+
     return {
-      months: ref(12),
-      attrs
+      months: reactive([
+        '01',
+        '02',
+        '03',
+        '04',
+        '05',
+        '06',
+        '07',
+        '08',
+        '09',
+        '10',
+        '11',
+        '12'
+      ]),
+      attrs: proxy.$attrs
     }
   }
 })
@@ -44,7 +66,7 @@ export default defineComponent({
   display: grid;
   min-width: 785px;
   grid-template-columns: repeat(4, 25%);
-  grid-template-rows: repeat(3, 33.33%);
+  grid-template-rows: repeat(3, calc(33.33% - 18px));
   justify-items: center;
   align-items: center;
   grid-row-gap: 18px;
