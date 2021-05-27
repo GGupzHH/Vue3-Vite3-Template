@@ -1,13 +1,19 @@
 <template>
   <div>
-    <h1>日历组件</h1>
+    <!-- <h1>日历组件</h1>
     <Calendar
-      :year="calendarCurrentYear"
+      v-model="calendarCurrentYear"
     />
     <h1>日历组件-带区间日期高亮和指定日期错误的配置</h1>
     <Calendar
-      :year="calendarCurrentYear"
+      v-model="calendarCurrentYear"
       :calendar-data="calendarData"
+    /> -->
+    <h1>年份控制器-日历组件-带区间日期高亮和指定日期错误的配置</h1>
+    <Calendar
+      v-model="calendarCurrentYear1"
+      :controller="true"
+      :calendar-data="calendarData1"
     />
   </div>
 </template>
@@ -42,6 +48,8 @@ export default defineComponent({
 
     const calendarCurrentYear = 2021 && new Date().getFullYear()
 
+    const calendarCurrentYear1 = 2021 && new Date().getFullYear()
+
     const calendarData = reactive({
       errorDay: {
         2021: {
@@ -56,10 +64,26 @@ export default defineComponent({
       // interval: 可能是多个时间段
     })
 
+    const calendarData1 = reactive({
+      errorDay: {
+        2021: {
+          4: [1, 2, 3, 5],
+          5: [9],
+          10: [3]
+        }
+      },
+      // 高亮日期时间段 这个时间段的年会被当做一年
+      startDay: '2019-03-11',
+      endDay: '2021-11-20'
+      // interval: 可能是多个时间段
+    })
+
     return {
       demoList,
       calendarCurrentYear,
-      calendarData
+      calendarData,
+      calendarCurrentYear1,
+      calendarData1
     }
   }
 })
