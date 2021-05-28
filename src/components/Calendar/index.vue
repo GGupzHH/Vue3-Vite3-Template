@@ -5,9 +5,8 @@
   >
     <span>选择年份:</span>
     <el-select
-      v-model="modelValue"
+      v-model="currentYear"
       placeholder="请选择"
-      @change="$emit('update:modelValue', $event.target)"
     >
       <el-option
         v-for="item in calendarYearList"
@@ -18,14 +17,14 @@
     </el-select>
   </div>
   <div
-    :key="modelValue"
+    :key="currentYear"
     class="wrap-year"
   >
     <CalendarMonth
       v-for="month in months"
       :key="month"
       :month="month"
-      :year="modelValue"
+      :year="currentYear.value"
       v-bind="attrs"
     />
   </div>
@@ -33,11 +32,14 @@
 
 <script>
 import {
+  computed,
   defineComponent,
   getCurrentInstance,
   reactive,
+  ref,
   toRef,
-  toRefs
+  toRefs,
+  watch
 } from 'vue'
 
 import { useStore } from 'vuex'
@@ -54,7 +56,9 @@ const useController = (startYear, endYear) => {
   console.log(startYear, endYear)
   console.log(calendarYearList)
 
-  // calendarYearList = reactive(yearList)
+  return {
+    calendarYearList
+  }
 }
 
 export default defineComponent({
@@ -74,6 +78,10 @@ export default defineComponent({
     controller: {
       type: Boolean,
       default: false
+    },
+    calendarData: {
+      type: Object,
+      default: () => (reactive({}))
     }
   },
   emits: ['update:modelValue'],
@@ -83,17 +91,31 @@ export default defineComponent({
 
     // this
     const { proxy } = getCurrentInstance()
-    console.log(proxy.$attrs)
-    console.log(proxy.$attrs['calendar-data'])
-    console.log(proxy.$attrs['calendar-data'].startDay)
 
-    const { startDay, endDay } = toRefs(proxy.$attrs['calendar-data'])
+    const { modelValue } = toRefs(props)
+    const currentYear = computed
+
+    watch(() => modelValue, () => {
+      console.log(modelValue)
+      currentYear.value = modelValue.value
+    }, {
+      immediate: true
+    })
+
+    watch(() => currentYear.value, () => {
+      console.log(currentYear.value)
+      proxy.$emit('update:modelValue', currentYear.value)
+      console.log(modelValue)
+    })
+
+    const { startDay, endDay } = toRefs(props.calendarData)
 
     return {
       ...useController(
         new Date(startDay.value).getFullYear(),
         new Date(endDay.value).getFullYear()
       ),
+      currentYear,
       months: reactive([
         '01',
         '02',
@@ -108,7 +130,10 @@ export default defineComponent({
         '11',
         '12'
       ]),
-      attrs: proxy.$attrs
+      attrs: {
+        ...props,
+        ...proxy.$attrs
+      }
     }
   }
 })
