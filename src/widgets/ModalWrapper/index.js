@@ -71,7 +71,7 @@ const defaultData = {
 export default {
   install (Vue) {
     const ModalWrapper = defineComponent(Modal)
-    console.log(Vue.prototype)
+
     Vue.config.globalProperties.$modalWrapper = function (options) {
       const {
         component,

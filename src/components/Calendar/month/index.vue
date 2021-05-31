@@ -35,13 +35,9 @@
 
 <script>
 import {
-  computed,
   defineComponent,
-  getCurrentInstance,
   reactive,
-  toRef,
-  toRefs,
-  watch
+  toRefs
 } from 'vue'
 import { useStore } from 'vuex'
 
@@ -103,13 +99,6 @@ const useCalendarMonth = (currentYear, currentMonth, startDay, endDay, errorDay)
   }
 
   const filterDayHighLightError = currentDay => {
-    // console.log(errorDay)
-    // console.log(
-    //   currentYear,
-    //   currentMonth,
-    //   errorDay.value.hasOwnProperty(currentYear),
-    //   errorDay.value[currentYear],
-    //   errorDay.value[currentYear].hasOwnProperty(currentMonth))
     const month = currentMonth - 0
     if (
       errorDay.value[currentYear] &&

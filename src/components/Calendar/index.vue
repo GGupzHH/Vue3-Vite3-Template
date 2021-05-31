@@ -5,9 +5,8 @@
   >
     <span>选择年份:</span>
     <el-select
-      v-model="modelValue"
+      v-model="currentYear"
       placeholder="请选择"
-      @change="$emit('update:modelValue', $event.target)"
     >
       <el-option
         v-for="item in calendarYearList"
@@ -18,14 +17,14 @@
     </el-select>
   </div>
   <div
-    :key="modelValue"
+    :key="currentYear"
     class="wrap-year"
   >
     <CalendarMonth
       v-for="month in months"
       :key="month"
       :month="month"
-      :year="modelValue"
+      :year="currentYear"
       v-bind="attrs"
     />
   </div>
@@ -36,25 +35,26 @@ import {
   defineComponent,
   getCurrentInstance,
   reactive,
-  toRef,
-  toRefs
+  ref,
+  toRefs,
+  watch
 } from 'vue'
 
 import { useStore } from 'vuex'
 import CalendarMonth from 'comps/Calendar/month/index.vue'
 
+// 获取年份list
 const useController = (startYear, endYear) => {
   const calendarYearList = reactive([])
 
   // 年份列表
-
   for (let i = 0; i <= (endYear - startYear); i++) {
     calendarYearList.push(startYear + i)
   }
-  console.log(startYear, endYear)
-  console.log(calendarYearList)
 
-  // calendarYearList = reactive(yearList)
+  return {
+    calendarYearList
+  }
 }
 
 export default defineComponent({
@@ -74,6 +74,10 @@ export default defineComponent({
     controller: {
       type: Boolean,
       default: false
+    },
+    calendarData: {
+      type: Object,
+      default: () => (reactive({}))
     }
   },
   emits: ['update:modelValue'],
@@ -83,17 +87,30 @@ export default defineComponent({
 
     // this
     const { proxy } = getCurrentInstance()
-    console.log(proxy.$attrs)
-    console.log(proxy.$attrs['calendar-data'])
-    console.log(proxy.$attrs['calendar-data'].startDay)
 
-    const { startDay, endDay } = toRefs(proxy.$attrs['calendar-data'])
+    // v-model
+    const { modelValue } = toRefs(props)
+    const currentYear = ref()
+    // 获取默认年份
+    currentYear.value = modelValue.value
 
-    return {
-      ...useController(
+    watch(() => currentYear.value, () => {
+      proxy.$emit('update:modelValue', currentYear.value)
+    })
+
+    let yearList = {}
+    // 当不需要控制器的时候没有这些数据
+    if (props.calendarData.startDay) {
+      const { startDay, endDay } = toRefs(props.calendarData)
+      yearList = useController(
         new Date(startDay.value).getFullYear(),
         new Date(endDay.value).getFullYear()
-      ),
+      )
+    }
+
+    return {
+      ...yearList,
+      currentYear,
       months: reactive([
         '01',
         '02',
@@ -108,7 +125,10 @@ export default defineComponent({
         '11',
         '12'
       ]),
-      attrs: proxy.$attrs
+      attrs: {
+        calendarData: props.calendarData,
+        ...proxy.$attrs
+      }
     }
   }
 })
