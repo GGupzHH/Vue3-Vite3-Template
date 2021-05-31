@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <h1>日历组件</h1>
+    <h1>日历组件</h1>
     <Calendar
       v-model="calendarCurrentYear"
     />
@@ -8,7 +8,7 @@
     <Calendar
       v-model="calendarCurrentYear"
       :calendar-data="calendarData"
-    /> -->
+    />
     <h1>年份控制器-日历组件-带区间日期高亮和指定日期错误的配置</h1>
     <Calendar
       v-model="calendarCurrentYear1"
@@ -53,7 +53,7 @@ export default defineComponent({
     const calendarData = reactive({
       errorDay: {
         2021: {
-          4: [1, 2, 3, 5],
+          4: [1, 2, 3, 5, 6, 7],
           5: [9],
           10: [3]
         }

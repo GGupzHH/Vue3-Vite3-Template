@@ -35,13 +35,9 @@
 
 <script>
 import {
-  computed,
   defineComponent,
-  getCurrentInstance,
   reactive,
-  toRef,
-  toRefs,
-  watch
+  toRefs
 } from 'vue'
 import { useStore } from 'vuex'
 

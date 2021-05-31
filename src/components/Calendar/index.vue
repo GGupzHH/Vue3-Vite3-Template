@@ -24,7 +24,7 @@
       v-for="month in months"
       :key="month"
       :month="month"
-      :year="currentYear.value"
+      :year="currentYear"
       v-bind="attrs"
     />
   </div>
@@ -32,12 +32,10 @@
 
 <script>
 import {
-  computed,
   defineComponent,
   getCurrentInstance,
   reactive,
   ref,
-  toRef,
   toRefs,
   watch
 } from 'vue'
@@ -45,16 +43,14 @@ import {
 import { useStore } from 'vuex'
 import CalendarMonth from 'comps/Calendar/month/index.vue'
 
+// 获取年份list
 const useController = (startYear, endYear) => {
   const calendarYearList = reactive([])
 
   // 年份列表
-
   for (let i = 0; i <= (endYear - startYear); i++) {
     calendarYearList.push(startYear + i)
   }
-  console.log(startYear, endYear)
-  console.log(calendarYearList)
 
   return {
     calendarYearList
@@ -92,29 +88,28 @@ export default defineComponent({
     // this
     const { proxy } = getCurrentInstance()
 
+    // v-model
     const { modelValue } = toRefs(props)
-    const currentYear = computed
-
-    watch(() => modelValue, () => {
-      console.log(modelValue)
-      currentYear.value = modelValue.value
-    }, {
-      immediate: true
-    })
+    const currentYear = ref()
+    // 获取默认年份
+    currentYear.value = modelValue.value
 
     watch(() => currentYear.value, () => {
-      console.log(currentYear.value)
       proxy.$emit('update:modelValue', currentYear.value)
-      console.log(modelValue)
     })
 
-    const { startDay, endDay } = toRefs(props.calendarData)
-
-    return {
-      ...useController(
+    let yearList = {}
+    // 当不需要控制器的时候没有这些数据
+    if (props.calendarData.startDay) {
+      const { startDay, endDay } = toRefs(props.calendarData)
+      yearList = useController(
         new Date(startDay.value).getFullYear(),
         new Date(endDay.value).getFullYear()
-      ),
+      )
+    }
+
+    return {
+      ...yearList,
       currentYear,
       months: reactive([
         '01',
@@ -131,7 +126,7 @@ export default defineComponent({
         '12'
       ]),
       attrs: {
-        ...props,
+        calendarData: props.calendarData,
         ...proxy.$attrs
       }
     }
