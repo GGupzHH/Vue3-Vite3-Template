@@ -1,48 +1,58 @@
 <template>
-  <div>
-    <header
-      class="navigation-navbar-header-container fixed-header"
+  <router-link
+    to="/"
+    class="wrap-navbar"
+  >
+    <img
+      class="logo-img"
+      src="@/assets/svg/shinewing-dark.svg"
+      alt="LOGO"
     >
-      <div class="navbar-header-box">
-        <NavigationSideLogo />
-        <div style="flex: 1;"></div>
-        <NavigationSideAction />
-      </div>
-    </header>
-  </div>
+    <h1 class="logo-title">
+      舞弊识别工具
+    </h1>
+  </router-link>
 </template>
 
 <script>
-import NavigationSideLogo from 'comps/Navigation/Side/SideLogo'
-import NavigationSideAction from 'comps/Navigation/Side/SideAction'
+import {
+  defineComponent,
+  getCurrentInstance
+} from 'vue'
+import { useStore } from 'vuex'
 
-export default {
-  name: 'NavigationNavBar',
-  components: {
-    NavigationSideLogo,
-    NavigationSideAction
+export default defineComponent({
+  name: 'NavBar',
+  components: {},
+  props: {
+
+  },
+  setup () {
+    // Vuex store
+    const store = useStore()
+
+    // this
+    const { ctx } = getCurrentInstance()
+
+    return {
+    }
   }
-}
+})
 </script>
-<style lang="scss" scoped>
-$headerHeight: 48px;
-.navigation-navbar-header-container {
-  height: $headerHeight;
-  line-height: $headerHeight;
-  &.fixed-header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 3;
-    box-shadow: 0 1px 4px rgba(0,21,41,.08);
+
+<style scoped lang="scss">
+.wrap-navbar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  .logo-img {
+    width: 56px;
+    height: 34px;
   }
-  .navbar-header-box {
-    display: flex;
-    height: 100%;
-    padding: 0 16px;
-    background-color: #fff;
+  .logo-title {
+    font-size: 14px;
+    padding-left: 16px;
+    color: #303133;
   }
 }
 </style>

@@ -26,6 +26,7 @@
       :month="month"
       :year="currentYear"
       v-bind="attrs"
+      @click="onClick($event, currentYear, month)"
     />
   </div>
 </template>
@@ -80,13 +81,19 @@ export default defineComponent({
       default: () => (reactive({}))
     }
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'dayClick'],
   setup (props) {
     // Vuex store
     const store = useStore()
 
     // this
     const { proxy } = getCurrentInstance()
+
+    const onClick = (event, year, month) => {
+      console.log(event)
+      console.log(year, month)
+      proxy.$emit('dayClick', year)
+    }
 
     // v-model
     const { modelValue } = toRefs(props)
@@ -109,6 +116,7 @@ export default defineComponent({
     }
 
     return {
+      onClick,
       ...yearList,
       currentYear,
       months: reactive([
