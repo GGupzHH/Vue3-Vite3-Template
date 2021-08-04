@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 
 import router from 'router'
+import 'router/permission'
 
 import store from 'store'
 
@@ -12,6 +13,8 @@ import ElementPlus from 'element-plus'
 // element 国际化
 import locale from 'element-plus/lib/locale/lang/zh-cn'
 import 'dayjs/locale/zh-cn'
+
+import '@/assets/fonts'
 
 import { sync } from 'vuex-router-sync'
 import GlobalComponents from 'comps'

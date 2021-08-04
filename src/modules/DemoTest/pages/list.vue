@@ -3,6 +3,7 @@
     <h1>日历组件</h1>
     <Calendar
       v-model="calendarCurrentYear"
+      @dayClick="onclick"
     />
     <h1>日历组件-带区间日期高亮和指定日期错误的配置</h1>
     <Calendar
@@ -34,6 +35,9 @@ export default defineComponent({
   components: {},
   props: {},
   setup () {
+    const onclick = (dayItem) => {
+      console.log(dayItem)
+    }
     // Vuex store
     const store = useStore()
     const demoList = computed(() => store.state.DemeTest.demoList)
@@ -79,6 +83,7 @@ export default defineComponent({
     })
 
     return {
+      onclick,
       demoList,
       calendarCurrentYear,
       calendarData,
