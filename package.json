@@ -9,7 +9,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "echarts": "^5.0.2",
-    "element-plus": "^1.0.2-beta.33",
+    "element-plus": "^1.0.2-beta.71",
     "js-cookie": "^2.2.1",
     "nprogress": "^0.2.0",
     "vue": "^3.0.7",
