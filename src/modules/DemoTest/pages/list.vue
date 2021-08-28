@@ -1,4 +1,21 @@
 <template>
+  <el-button
+    type="primary"
+  >
+    <i class="el-icon-setting"></i>asdasdsa
+  </el-button>
+  <el-radio
+    v-model="radio"
+    label="1"
+  >
+    备选项
+  </el-radio>
+  <el-radio
+    v-model="radio"
+    label="2"
+  >
+    备选项
+  </el-radio>
   <div>
     <h1>日历组件</h1>
     <Calendar
@@ -88,7 +105,8 @@ export default defineComponent({
       calendarCurrentYear,
       calendarData,
       calendarCurrentYear1,
-      calendarData1
+      calendarData1,
+      radio: '1'
     }
   }
 })
