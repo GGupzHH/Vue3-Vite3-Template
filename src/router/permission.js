@@ -2,7 +2,7 @@ import router from '@/router'
 import store from '@/store'
 import Cookie from 'js-cookie'
 import { allowlist } from '@/router/auth-list'
-import HomeModule from '@/modules/Home/store'
+// import HomeModule from '@/modules/Home/store'
 
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
