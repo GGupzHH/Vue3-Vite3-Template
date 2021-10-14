@@ -3,10 +3,23 @@ import vue from '@vitejs/plugin-vue'
 import { terser } from 'rollup-plugins-terser'
 const path = require('path')
 
+const htmlPlugin = () => {
+  return {
+    name: 'html-transform',
+    transformIndexHtml (html) {
+      return html.replace(
+        /<title>(.*?)<\/title>/,
+        '<title>UPro</title>'
+      )
+    }
+  }
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    htmlPlugin(),
     terser(
       {
         compress: {
