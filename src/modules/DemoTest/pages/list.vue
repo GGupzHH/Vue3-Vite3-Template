@@ -16,6 +16,9 @@
   >
     备选项
   </el-radio>
+  <el-button @click="handle">
+    Composition API
+  </el-button>
   <div>
     <h1>日历组件</h1>
     <Calendar
@@ -44,6 +47,7 @@ import {
   getCurrentInstance,
   reactive
 } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 // import DemoTestModule from '@/modules/DemoTest/store'
 
@@ -57,7 +61,12 @@ export default defineComponent({
     }
     // Vuex store
     const store = useStore()
+    const router = useRouter()
     const demoList = computed(() => store.state.DemeTest.demoList)
+
+    const handle = () => {
+      router.push('/composition/api')
+    }
 
     // watch
     watch(() => demoList, (list, prevList) => {
@@ -106,7 +115,8 @@ export default defineComponent({
       calendarData,
       calendarCurrentYear1,
       calendarData1,
-      radio: '1'
+      radio: '1',
+      handle
     }
   }
 })

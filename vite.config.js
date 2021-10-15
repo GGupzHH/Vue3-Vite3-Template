@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { terser } from 'rollup-plugins-terser'
+import { terser } from 'rollup-plugin-terser'
 const path = require('path')
 
 const htmlPlugin = () => {

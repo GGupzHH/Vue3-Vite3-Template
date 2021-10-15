@@ -14,6 +14,27 @@ const routes = [
     redirect: '/demo-test'
   },
   {
+    path: '/composition',
+    component: Layout,
+    name: 'Composition',
+    icon: 'el-icon-attract',
+    meta: {
+      title: 'Composition-Api'
+    },
+    hiddenMenu: true,
+    redirect: '/composition/api',
+    children: [
+      {
+        path: 'api',
+        name: 'CompositionApi',
+        component: () => import('@/modules/DemoTest/pages/composition-api.vue'),
+        meta: {
+          title: 'Composition-Api'
+        }
+      }
+    ]
+  },
+  {
     path: '/demo-test',
     component: Layout,
     name: 'DemoTest',
@@ -35,7 +56,7 @@ const routes = [
       {
         path: 'show',
         name: 'DemoTestLoadingShow',
-        component: () => import('modules/DemoTest/pages/loading-show.vue'),
+        component: () => import('@/modules/DemoTest/pages/composition-api.vue-show.vue'),
         meta: {
           title: 'demo-loading-show'
         }
