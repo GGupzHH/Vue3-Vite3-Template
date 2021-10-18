@@ -13,12 +13,12 @@ import {
   defineExpose
 } from 'vue'
 import { useStore } from 'vuex'
-
+const name = 'CompositionApiTests'
 const test = ref(1)
 // defineExpose
-// defineExpose({
-//   test
-// })
+defineExpose({
+  test
+})
 </script>
 
 <style scoped lang="scss">
