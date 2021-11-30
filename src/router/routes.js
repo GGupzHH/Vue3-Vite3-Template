@@ -56,7 +56,7 @@ const routes = [
       {
         path: 'show',
         name: 'DemoTestLoadingShow',
-        component: () => import('@/modules/DemoTest/pages/composition-api.vue-show.vue'),
+        component: () => import('@/modules/DemoTest/pages/composition-api.vue'),
         meta: {
           title: 'demo-loading-show'
         }
