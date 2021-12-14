@@ -4,7 +4,7 @@
 // otherwise it will affect the packaging speed.
 
 /* theme color */
-$--color-primary: red !default;
+$--color-primary: #F37021;
 $--color-success: #67c23a;
 $--color-warning: #e6a23c;
 $--color-danger: #f56c6c;
@@ -20,3 +20,37 @@ $--table-border: 1px solid #dfe6ec;
 // :export {
 //   colorPrimary: $--color-primary;
 // }
+
+// 按需导入，重写覆盖自己所需样式
+@forward "element-plus/theme-chalk/src/common/var.scss" with (
+  $colors: (
+    "primary": (
+      "base": $--color-primary,
+    ),
+    "success": (
+      "base":  $--color-success,
+    ),
+    "warning": (
+      "base": $--color-warning,
+    ),
+    "danger": (
+      "base":  $--color-danger,
+    ),
+    "info": (
+      "base": $--color-info,
+    ),
+    
+  ),
+  $text-color: (
+    'primary': red,
+    'regular': #606266,
+    'secondary': #909399,
+    'placeholder': #c0c4cc,
+  ),
+  $border-radius: (
+    'base': 4px,
+    'small': 2px,
+    'round': 20px,
+    'circle': 100%,
+  ),
+);
