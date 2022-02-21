@@ -1,5 +1,5 @@
 {
-  "name": "360-validation",
+  "name": "vite-vue3-template",
   "version": "0.0.0",
   "scripts": {
     "serve": "vite --host",
