@@ -6,6 +6,8 @@ import { createStore } from 'vuex'
 // import plugins from '@/store/plugins'
 import plugins from 'store/plugins'
 
+import pinia from 'pinia'
+
 /**
  * modules mount
  */
