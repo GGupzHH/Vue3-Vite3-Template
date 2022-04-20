@@ -48,30 +48,26 @@ import {
   reactive
 } from 'vue'
 import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
 // import DemoTestModule from '@/modules/DemoTest/store'
+import { useDemoTest2 } from 'modules/DemoTest/store/index.js'
 
 export default defineComponent({
   name: 'Xx',
   components: {},
   props: {},
   setup () {
+
+    const store = useDemoTest2()
+    console.log(store)
     const onclick = (dayItem) => {
       console.log(dayItem)
     }
-    // Vuex store
-    const store = useStore()
     const router = useRouter()
-    const demoList = computed(() => store.state.DemeTest.demoList)
 
     const handle = () => {
       router.push('/composition/api')
     }
 
-    // watch
-    watch(() => demoList, (list, prevList) => {
-      /* --- */
-    })
 
     // this  ctx并不能在生产环境使用
     const { proxy } = getCurrentInstance()
@@ -110,7 +106,6 @@ export default defineComponent({
 
     return {
       onclick,
-      demoList,
       calendarCurrentYear,
       calendarData,
       calendarCurrentYear1,

@@ -41,7 +41,6 @@ import {
   watch
 } from 'vue'
 
-import { useStore } from 'vuex'
 import CalendarMonth from 'comps/Calendar/month/index.vue'
 
 // 获取年份list
@@ -83,8 +82,6 @@ export default defineComponent({
   },
   emits: ['update:modelValue', 'dayClick'],
   setup (props) {
-    // Vuex store
-    const store = useStore()
 
     // this
     const { proxy } = getCurrentInstance()

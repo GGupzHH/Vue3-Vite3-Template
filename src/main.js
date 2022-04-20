@@ -3,7 +3,6 @@ import { createApp } from 'vue'
 import router from 'router'
 import 'router/permission'
 
-import store from 'store'
 
 import App from './App.vue'
 
@@ -16,18 +15,17 @@ import 'dayjs/locale/zh-cn'
 
 import '@/assets/fonts'
 
-import { sync } from 'vuex-router-sync'
 import GlobalComponents from 'comps'
 import Mixin from './mixins'
 import Widgets from './widgets'
 
+import pinia from '@/store'
 const app = createApp(App)
 
 app
-  .use(store)
+  .use(pinia)
   .use(router)
 
-sync(store, router)
 
 app
   .use(ElementPlus, {

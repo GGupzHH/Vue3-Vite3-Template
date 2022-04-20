@@ -39,7 +39,6 @@ import {
   reactive,
   toRefs
 } from 'vue'
-import { useStore } from 'vuex'
 
 const useCalendarMonth = (currentYear, currentMonth, startDay, endDay, errorDay) => {
   const week = reactive(['日', '一', '二', '三', '四', '五', '六'])
@@ -136,8 +135,6 @@ export default defineComponent({
     }
   },
   setup (props) {
-    // Vuex store
-    const store = useStore()
 
     const {
       startDay,

@@ -33,7 +33,6 @@ import {
   watch
 } from 'vue'
 import { useRoute } from 'vue-router'
-import { useStore } from 'vuex'
 
 const replaceParams = (params, path) => {
   Object.keys(params).forEach(paramsItem => {
@@ -48,8 +47,6 @@ export default defineComponent({
   components: {},
   props: {},
   setup () {
-    // Vuex store
-    const store = useStore()
 
     const route = useRoute()
 

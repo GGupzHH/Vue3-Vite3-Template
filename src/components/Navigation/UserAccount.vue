@@ -36,7 +36,6 @@ import {
   defineComponent,
   getCurrentInstance
 } from 'vue'
-import { useStore } from 'vuex'
 
 // user
 const useUserInfo = () => {
@@ -55,8 +54,6 @@ export default defineComponent({
   components: {},
   props: {},
   setup () {
-    // Vuex store
-    const store = useStore()
 
     // this
     const { ctx } = getCurrentInstance()

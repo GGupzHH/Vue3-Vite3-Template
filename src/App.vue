@@ -11,9 +11,8 @@ import en from 'element-plus/lib/locale/lang/en'
 import zhTw from 'element-plus/lib/locale/lang/zh-tw'
 import { computed, reactive, ref } from '@vue/reactivity'
 import { getCurrentInstance } from '@vue/runtime-core'
-import { useStore } from 'vuex'
 
-const useLanguage = (store) => {
+const useLanguage = () => {
   const lang = computed(() => {
     let lang = null
     lang = {
@@ -66,9 +65,8 @@ export default {
     // ElConfigProvider
   },
   setup () {
-    const store = useStore()
     return {
-      ...useLanguage(store)
+      ...useLanguage()
     }
   }
 }

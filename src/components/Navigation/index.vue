@@ -11,7 +11,6 @@ import {
   defineComponent,
   getCurrentInstance
 } from 'vue'
-import { useStore } from 'vuex'
 import BreadCrumbs from 'comps/Navigation/BreadCrumbs.vue'
 import NavBar from 'comps/Navigation/NavBar.vue'
 import UserAccount from 'comps/Navigation/UserAccount.vue'
@@ -30,8 +29,6 @@ export default defineComponent({
     }
   },
   setup (props, context) {
-    // Vuex store
-    const store = useStore()
 
     // this
     const { ctx, proxy } = getCurrentInstance()

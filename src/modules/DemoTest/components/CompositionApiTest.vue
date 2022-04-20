@@ -12,7 +12,6 @@ import {
   ref,
   defineExpose
 } from 'vue'
-import { useStore } from 'vuex'
 const name = 'CompositionApiTests'
 const test = ref(1)
 // defineExpose

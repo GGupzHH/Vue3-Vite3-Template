@@ -19,7 +19,6 @@ import {
   defineComponent,
   getCurrentInstance
 } from 'vue'
-import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'NavBar',
@@ -28,8 +27,6 @@ export default defineComponent({
 
   },
   setup () {
-    // Vuex store
-    const store = useStore()
 
     // this
     const { ctx } = getCurrentInstance()
