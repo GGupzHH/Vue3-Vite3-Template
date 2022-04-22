@@ -26,8 +26,9 @@
       :month="month"
       :year="currentYear"
       v-bind="attrs"
-      @click="onClick($event, currentYear, month)"
+      @handle-click="onClick"
     />
+    <!-- @click="onClick($event, currentYear, month)" -->
   </div>
 </template>
 
@@ -86,10 +87,8 @@ export default defineComponent({
     // this
     const { proxy } = getCurrentInstance()
 
-    const onClick = (event, year, month) => {
-      console.log(event)
-      console.log(year, month)
-      proxy.$emit('dayClick', year)
+    const onClick = (currentDayInfo) => {
+      proxy.$emit('dayClick', currentDayInfo)
     }
 
     // v-model

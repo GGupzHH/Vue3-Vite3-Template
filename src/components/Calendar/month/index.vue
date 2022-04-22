@@ -25,6 +25,7 @@
             'day-high-light': dayItem.content && startDay && filterDayHighLight(dayItem.content),
             'day-high-light-error': dayItem.content && errorDay && filterDayHighLightError(dayItem.content)
           }"
+          @click="handleClick($event, dayItem)"
         >
           {{ dayItem.content }}
         </span>
@@ -36,11 +37,12 @@
 <script>
 import {
   defineComponent,
+  getCurrentInstance,
   reactive,
   toRefs
 } from 'vue'
 
-const useCalendarMonth = (currentYear, currentMonth, startDay, endDay, errorDay) => {
+const useCalendarMonth = (currentYear, currentMonth, startDay, endDay, errorDay, proxy) => {
   const week = reactive(['日', '一', '二', '三', '四', '五', '六'])
 
   const getCurrentMonthDays = (year, month) => {
@@ -109,12 +111,23 @@ const useCalendarMonth = (currentYear, currentMonth, startDay, endDay, errorDay)
     return false
   }
 
+  const handleClick = ($event, day) => {
+    const clickInfo = {
+      year: currentYear,
+      month: currentMonth,
+      day
+    }
+    proxy.$emit('handleClick', clickInfo)
+
+  }
+
   return {
     week,
     currentMonth,
     monthList,
     filterDayHighLight,
-    filterDayHighLightError
+    filterDayHighLightError,
+    handleClick
   }
 }
 
@@ -134,6 +147,7 @@ export default defineComponent({
       default: () => (reactive({}))
     }
   },
+  emits: ['handleClick'],
   setup (props) {
 
     const {
@@ -142,10 +156,12 @@ export default defineComponent({
       errorDay
     } = toRefs(props.calendarData)
 
+    const proxy = getCurrentInstance()?.proxy
+
     return {
       startDay,
       errorDay,
-      ...useCalendarMonth(props.year, props.month, startDay, endDay, errorDay)
+      ...useCalendarMonth(props.year, props.month, startDay, endDay, errorDay, proxy)
     }
   }
 })
