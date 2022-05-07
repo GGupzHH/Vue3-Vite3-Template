@@ -7,6 +7,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@babel/core": "7.17.9",
     "@vue/reactivity": "^3.2.33",
     "@vue/runtime-core": "^3.2.33",
     "axios": "^0.24.0",
@@ -23,7 +24,6 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.10",
     "@babel/eslint-parser": "^7.17.0",
     "@vitejs/plugin-vue": "^2.3.2",
     "@vue/cli-plugin-babel": "~4.5.17",
