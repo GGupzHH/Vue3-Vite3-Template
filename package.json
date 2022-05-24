@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "@babel/core": "7.17.9",
-    "@vue/reactivity": "^3.2.35",
-    "@vue/runtime-core": "^3.2.35",
+    "@vue/reactivity": "^3.2.36",
+    "@vue/runtime-core": "^3.2.36",
     "axios": "^0.24.0",
     "dayjs": "^1.11.2",
     "echarts": "^5.3.2",
@@ -18,7 +18,7 @@
     "nprogress": "^0.2.0",
     "pinia": "^2.0.14",
     "rollup-plugin-terser": "^7.0.2",
-    "vue": "^3.2.35",
+    "vue": "^3.2.36",
     "vue-router": "^4.0.15",
     "vuex": "^4.0.2",
     "vuex-router-sync": "^5.0.0"
@@ -27,7 +27,7 @@
     "@babel/eslint-parser": "^7.17.0",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/cli-plugin-babel": "~4.5.17",
-    "@vue/compiler-sfc": "^3.2.35",
+    "@vue/compiler-sfc": "^3.2.36",
     "@vue/eslint-config-standard": "^6.1.0",
     "eslint": "^8.16.0",
     "eslint-plugin-import": "^2.26.0",
