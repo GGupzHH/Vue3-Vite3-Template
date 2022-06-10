@@ -28,13 +28,71 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-
+    'no-unused-vars': 1,
+    'no-undef': 1,
+    'no-var': 'error',
+    'no-trailing-spaces': 2, // 禁用行尾空白
+    'comma-style': ['error', 'last'],
+    'comma-dangle': ['error', 'never'],
+    'no-irregular-whitespace': 2,
+    'no-multi-spaces': 1,
+    'object-property-newline': ['error'],
+    'key-spacing': 'error',
+    'object-curly-spacing': ['error','always'],
+    'block-spacing': ['error', 'always'],
+    'computed-property-spacing': ['error', 'never'],
+    'func-call-spacing': ['error', 'never'],
+    'keyword-spacing': [
+      'error',
+      {
+        'before': true,
+        'after': true
+      }
+    ],
+    'space-infix-ops': [
+      'error',
+      {
+        'int32Hint':
+        false
+      }
+    ],
+    'spaced-comment': [
+      'error',
+      'always',
+      {
+        'exceptions': ['-', '+']
+      }
+    ],
+    'arrow-spacing': [
+      'error',
+      {
+        'before': true,
+        'after': true
+      }
+    ],
+    'template-curly-spacing': ['error', 'always'],
+    'no-multiple-empty-lines': [
+      2,
+      {
+        max: 1
+      }
+    ],
+    'quotes': [
+      'error',
+      'single',
+      {
+        'avoidEscape': true,
+        'allowTemplateLiterals': true
+      }
+    ],
+    'camelcase': ['error', { 'properties': 'never' }],
+    'indent': ['error', 2, { 'SwitchCase': 1 }],
+    'semi': ['error', 'never'],
     // vue
     'vue/multi-word-component-names': 0,
     'vue/no-unused-components': 1,
     'vue/no-mutating-props': 0,
     'vue/script-setup-uses-vars': 'error',
-    // https://eslint.vuejs.org/rules/v-on-event-hyphenation.html
     'vue/v-on-event-hyphenation': ['warn', 'always', {
       autofix: true
     }],
@@ -48,38 +106,12 @@ module.exports = {
       math: 'always'
     }],
 
-    // js
-    'no-unused-vars': 1,
-    'no-undef': 1,
-    // https://eslint.org/docs/rules/no-var
-    'no-var': 'error',
-    // https://cn.eslint.org/docs/rules/no-trailing-spaces
-    'no-trailing-spaces': 2, // 禁用行尾空白
-    'comma-style': ['error', 'last'],
-    'comma-dangle': ['error', 'never'],
-    'no-irregular-whitespace': 2,
-    'no-multi-spaces': 1,
-    'no-multiple-empty-lines': [
-      2,
-      {
-        max: 1
-      }
-    ],
     // https://cn.eslint.org/docs/rules/eol-last
     'eol-last': 2,
-    quotes: [
-      'error',
-      'single',
-      {
-        avoidEscape: true,
-        allowTemplateLiterals: true
-      }
-    ],
+
     // https://eslint.org/docs/rules/prefer-const
     'prefer-const': 2,
-    camelcase: ['error', { properties: 'never' }],
-    indent: ['error', 2, { SwitchCase: 1 }],
-    semi: ['error', 'never'],
+
     'space-before-function-paren': 'error'
   }
 }
