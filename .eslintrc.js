@@ -112,6 +112,9 @@ module.exports = {
     // https://eslint.org/docs/rules/prefer-const
     'prefer-const': 2,
 
-    'space-before-function-paren': 'error'
+    'space-before-function-paren': [
+      'error',
+      'never'
+    ]
   }
 }
