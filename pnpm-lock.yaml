@@ -1760,10 +1760,10 @@ packages:
     version: 1.2.2
     dev: true
 
-  registry.npmmirror.com/@types/node/17.0.41:
-    resolution: {integrity: sha512-xA6drNNeqb5YyV5fO3OAEsnXLfO7uF0whiOfPTz5AeDo8KeZFmODKnvwPymMNO8qE/an8pVY/O50tig2SQCrGw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-17.0.41.tgz}
+  registry.npmmirror.com/@types/node/17.0.42:
+    resolution: {integrity: sha512-Q5BPGyGKcvQgAMbsr7qEGN/kIPN6zZecYYABeTDBizOsau+2NMdSVTar9UQw21A2+JyA2KRNDYaYrPB0Rpk2oQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-17.0.42.tgz}
     name: '@types/node'
-    version: 17.0.41
+    version: 17.0.42
     dev: false
 
   registry.npmmirror.com/@types/normalize-package-data/2.4.1:
@@ -2981,7 +2981,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: registry.npmmirror.com/caniuse-lite/1.0.30001352
-      electron-to-chromium: registry.npmmirror.com/electron-to-chromium/1.4.151
+      electron-to-chromium: registry.npmmirror.com/electron-to-chromium/1.4.152
       escalade: registry.npmmirror.com/escalade/3.1.1
       node-releases: registry.npmmirror.com/node-releases/2.0.5
       picocolors: registry.npmmirror.com/picocolors/1.0.0
@@ -3778,10 +3778,10 @@ packages:
       zrender: registry.npmmirror.com/zrender/5.3.1
     dev: false
 
-  registry.npmmirror.com/electron-to-chromium/1.4.151:
-    resolution: {integrity: sha512-XaG2LpZi9fdiWYOqJh0dJy4SlVywCvpgYXhzOlZTp4JqSKqxn5URqOjbm9OMYB3aInA2GuHQiem1QUOc1yT0Pw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.151.tgz}
+  registry.npmmirror.com/electron-to-chromium/1.4.152:
+    resolution: {integrity: sha512-jk4Ju5SGZAQQJ1iI4Rgru7dDlvkQPLpNPWH9gIZmwCD4YteA5Bbk1xPcPDUf5jUYs3e1e80RXdi8XgKQZaigeg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.152.tgz}
     name: electron-to-chromium
-    version: 1.4.151
+    version: 1.4.152
 
   registry.npmmirror.com/element-plus/1.2.0-beta.6_vue@3.2.37:
     resolution: {integrity: sha512-8EdSIR/5/FHcSB8w1diAh+gJMHgxIvxuZoayY99k6taAR1QyEFHuPTgFccZLopJ1+iP4UEsZFz49l57qS08Utw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/element-plus/-/element-plus-1.2.0-beta.6.tgz}
@@ -5756,7 +5756,7 @@ packages:
     version: 26.6.2
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': registry.npmmirror.com/@types/node/17.0.41
+      '@types/node': registry.npmmirror.com/@types/node/17.0.42
       merge-stream: registry.npmmirror.com/merge-stream/2.0.0
       supports-color: registry.npmmirror.com/supports-color/7.2.0
     dev: false
@@ -7577,7 +7577,7 @@ packages:
       '@babel/code-frame': registry.npmmirror.com/@babel/code-frame/7.16.7
       jest-worker: registry.npmmirror.com/jest-worker/26.6.2
       serialize-javascript: registry.npmmirror.com/serialize-javascript/4.0.0
-      terser: registry.npmmirror.com/terser/5.14.0
+      terser: registry.npmmirror.com/terser/5.14.1
     dev: false
 
   registry.npmmirror.com/rollup/2.75.6:
@@ -8286,10 +8286,10 @@ packages:
       source-map-support: registry.npmmirror.com/source-map-support/0.5.21
     dev: true
 
-  registry.npmmirror.com/terser/5.14.0:
-    resolution: {integrity: sha512-JC6qfIEkPBd9j1SMO3Pfn+A6w2kQV54tv+ABQLgZr7dA3k/DL/OBoYSWxzVpZev3J+bUHXfr55L8Mox7AaNo6g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/terser/-/terser-5.14.0.tgz}
+  registry.npmmirror.com/terser/5.14.1:
+    resolution: {integrity: sha512-+ahUAE+iheqBTDxXhTisdA8hgvbEG1hHOQ9xmNjeUJSoi6DU/gMrKNcfZjHkyY6Alnuyc+ikYJaxxfHkT3+WuQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/terser/-/terser-5.14.1.tgz}
     name: terser
-    version: 5.14.0
+    version: 5.14.1
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
