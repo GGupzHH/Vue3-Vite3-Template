@@ -5,10 +5,10 @@ import Modal from './modal.vue'
 let instance = {}
 
 export default {
-  install (Vue) {
+  install(Vue) {
     const ModalWrapper = defineComponent(Modal)
 
-    Vue.config.globalProperties.$ModalPrompt = function ({
+    Vue.config.globalProperties.$ModalPrompt = function({
       icon = 'warning',
       confirmType = 'danger',
       title = '提示',

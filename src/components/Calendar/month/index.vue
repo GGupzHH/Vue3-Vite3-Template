@@ -148,7 +148,7 @@ export default defineComponent({
     }
   },
   emits: ['handleClick'],
-  setup (props) {
+  setup(props) {
 
     const {
       startDay,

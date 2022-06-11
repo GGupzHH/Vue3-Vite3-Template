@@ -55,7 +55,7 @@ export default {
     },
     icon: {
       type: [String, Array],
-      default () {
+      default() {
         return [
           'el-icon-more',
           'el-icon-more'
@@ -64,18 +64,18 @@ export default {
     },
     options: {
       type: Array,
-      default () {
+      default() {
         return []
       }
     }
   },
-  data () {
+  data() {
     return {
       visible: false
     }
   },
   computed: {
-    getIconList () {
+    getIconList() {
       if (isString(this.icon)) {
         return [
           this.icon,
@@ -96,15 +96,15 @@ export default {
       }
       return this.icon
     },
-    getCurrentIcon () {
+    getCurrentIcon() {
       return this.getIconList[this.visible ? 1 : 0]
     }
   },
   methods: {
-    handleCommand (command) {
+    handleCommand(command) {
       this.$emit('select', command)
     },
-    triggerMask (visible) {
+    triggerMask(visible) {
       this.visible = visible
       this.$emit('change-visible', this.visible)
       // TODO: development 下关闭

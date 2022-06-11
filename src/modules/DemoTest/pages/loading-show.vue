@@ -12,7 +12,7 @@
 <script>
 // import { ServiceLoading } from '@/widgets/loading'
 export default {
-  created () {
+  created() {
     // ServiceLoading.show({
     //   background: '#fbfbfba1'
     // })
@@ -20,7 +20,7 @@ export default {
       this.$router.push('/demo-test/hide')
     }, 5000)
   },
-  mounted () {
+  mounted() {
   }
 }
 </script>

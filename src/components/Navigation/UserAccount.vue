@@ -53,7 +53,7 @@ export default defineComponent({
   name: 'UserAccount',
   components: {},
   props: {},
-  setup () {
+  setup() {
 
     // this
     const { ctx } = getCurrentInstance()

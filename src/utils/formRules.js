@@ -5,7 +5,7 @@ import {
   regexExtraSpace
 } from 'utils/regularExpression'
 
-function validatorRules (validator, trigger = '', params) {
+function validatorRules(validator, trigger = '', params) {
   const rule = {
     required: true,
     trigger,
@@ -15,7 +15,7 @@ function validatorRules (validator, trigger = '', params) {
   validator ? rule.validator = validator : delete rule.validator
   return rule
 }
-function requiredRules (params = {}) {
+function requiredRules(params = {}) {
   const { trigger, message } = Object.assign({}, {
     trigger: 'blur',
     message: '不能为空'
@@ -35,7 +35,7 @@ function requiredRules (params = {}) {
   }, trigger)
 }
 
-function requiredRadioRules (params = {}) {
+function requiredRadioRules(params = {}) {
   const { trigger, message } = Object.assign({}, {
     trigger: 'change',
     message: '不能为空'
@@ -48,7 +48,7 @@ function requiredRadioRules (params = {}) {
     }
   }, trigger)
 }
-function imageListRules (errMsg = '请上传全部图片') {
+function imageListRules(errMsg = '请上传全部图片') {
   const errSingle = '请选择一张图片'
   const validator = (rule, value, callback) => {
     if (!value) {

@@ -12,25 +12,25 @@ const version = require('element-plus/package.json').version // element-plus ver
 const ORIGINAL_THEME = '#409EFF' // default color
 
 export default {
-  data () {
+  data() {
     return {
       chalk: '', // content of theme-chalk css
       theme: ''
     }
   },
   computed: {
-    defaultTheme () {
+    defaultTheme() {
       return ORIGINAL_THEME
     }
   },
   watch: {
     defaultTheme: {
-      handler: function (val, oldVal) {
+      handler: function(val, oldVal) {
         this.theme = val
       },
       immediate: true
     },
-    async theme (val, prevVal) {
+    async theme(val, prevVal) {
       const oldVal = prevVal || this.theme
       if (typeof val !== 'string') return
       const themeCluster = this.getThemeCluster(val.replace('#', ''))
@@ -61,7 +61,7 @@ export default {
       }
 
       if (!this.chalk) {
-        const url = `https://unpkg.com/element-plus@${version}/lib/theme-chalk/index.css`
+        const url = `https://unpkg.com/element-plus@${ version }/lib/theme-chalk/index.css`
         await this.getCSSString(url, 'chalk')
       }
 
@@ -87,7 +87,7 @@ export default {
   },
 
   methods: {
-    updateStyle (style, oldCluster, newCluster) {
+    updateStyle(style, oldCluster, newCluster) {
       let newStyle = style
       oldCluster.forEach((color, index) => {
         newStyle = newStyle.replace(new RegExp(color, 'ig'), newCluster[index])
@@ -95,7 +95,7 @@ export default {
       return newStyle
     },
 
-    getCSSString (url, variable) {
+    getCSSString(url, variable) {
       return new Promise(resolve => {
         const xhr = new XMLHttpRequest()
         xhr.onreadystatechange = () => {
@@ -109,7 +109,7 @@ export default {
       })
     },
 
-    getThemeCluster (theme) {
+    getThemeCluster(theme) {
       const tintColor = (color, tint) => {
         let red = parseInt(color.slice(0, 2), 16)
         let green = parseInt(color.slice(2, 4), 16)
@@ -126,7 +126,7 @@ export default {
           green = green.toString(16)
           blue = blue.toString(16)
 
-          return `#${red}${green}${blue}`
+          return `#${ red }${ green }${ blue }`
         }
       }
 
@@ -143,7 +143,7 @@ export default {
         green = green.toString(16)
         blue = blue.toString(16)
 
-        return `#${red}${green}${blue}`
+        return `#${ red }${ green }${ blue }`
       }
 
       const clusters = [theme]

@@ -10,10 +10,10 @@ NProgress.configure({
   showSpinner: false
 })
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async(to, from, next) => {
   NProgress.start()
 
-  document.title = `${to.meta.title || ''} - 信永中和`
+  document.title = `${ to.meta.title || '' } - 信永中和`
   if (
     allowlist.find(
       name => to.name === name

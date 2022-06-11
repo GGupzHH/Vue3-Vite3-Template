@@ -56,7 +56,7 @@ export default {
     }
   },
   computed: {
-    getClassName () {
+    getClassName() {
       const className = []
       if (this.verticalCenter) {
         className.push('middle')
@@ -65,10 +65,10 @@ export default {
     }
   },
   methods: {
-    handleClick () {
+    handleClick() {
       this.$emit('click')
     },
-    getAttrs () {
+    getAttrs() {
       const attrs = {}
       this.shadow &&
       (attrs.filter = 'url(#drop-shadow)')

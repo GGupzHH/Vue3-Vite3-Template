@@ -9,12 +9,12 @@ import {
 } from 'utils/type'
 
 // camelize('hello_world') -> 'helloWorld'
-export function camelize (string) {
+export function camelize(string) {
   if (isNumberical(string)) {
     return string
   }
 
-  string = string.replace(/[-_\s]+(.)?/g, function (match, chr) {
+  string = string.replace(/[-_\s]+(.)?/g, function(match, chr) {
     return chr ? chr.toUpperCase() : ''
   })
 
@@ -22,12 +22,12 @@ export function camelize (string) {
 }
 
 // pascalize('hello_world') -> 'HelloWorld'
-export function pascalize (string) {
+export function pascalize(string) {
   const camelized = camelize(string)
   return camelized.substr(0, 1).toUpperCase() + camelized.substr(1)
 }
 
-function seperateWords (string, options) {
+function seperateWords(string, options) {
   options = options || {}
   const separator = options.separator || '_'
   const split = options.split || /(?=[A-Z])/
@@ -40,18 +40,18 @@ function seperateWords (string, options) {
  * decamelize('HelloWorld') -> 'hello_world'
  * decamelize('helloWorld', { separator: '-' }) -> 'hello-world'
  */
-export function decamelize (string, options) {
+export function decamelize(string, options) {
   return seperateWords(string, options).toLowerCase()
 }
 
-function processor (convert, options) {
+function processor(convert, options) {
   const callback = options && 'process' in options ? options.process : options
 
   if (typeof (callback) !== 'function') {
     return convert
   }
 
-  return function (string, options) {
+  return function(string, options) {
     return callback(string, convert, options)
   }
 }

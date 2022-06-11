@@ -40,7 +40,7 @@ export default {
   components: {
     ThemePocker
   },
-  data () {
+  data() {
     return {
       isSetting: false,
       isDrawer: true,
@@ -53,7 +53,7 @@ export default {
     }
   },
   methods: {
-    handleDrawer () {
+    handleDrawer() {
       this.isSetting = !this.isSetting
     }
   }

@@ -23,7 +23,7 @@
     <h1>日历组件</h1>
     <Calendar
       v-model="calendarCurrentYear"
-      @dayClick="onclick"
+      @day-click="onclick"
     />
     <h1>日历组件-带区间日期高亮和指定日期错误的配置</h1>
     <Calendar
@@ -55,7 +55,7 @@ export default defineComponent({
   name: 'Xx',
   components: {},
   props: {},
-  setup () {
+  setup() {
 
     const store = useDemoTest2()
     console.log(store)
@@ -67,7 +67,6 @@ export default defineComponent({
     const handle = () => {
       router.push('/composition/api')
     }
-
 
     // this  ctx并不能在生产环境使用
     const { proxy } = getCurrentInstance()

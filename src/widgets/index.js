@@ -4,7 +4,7 @@
 import ModalPrompt from 'widgets/ModalPrompt'
 
 export default {
-  install (Vue) {
+  install(Vue) {
     // Vue.use(ModalWrapper)
     Vue.use(ModalPrompt)
   }

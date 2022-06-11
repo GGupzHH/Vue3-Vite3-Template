@@ -5,11 +5,11 @@ import { Loading } from 'element-plus'
 export class ServiceLoading {
   static instance = null
 
-  static show (options) {
+  static show(options) {
     this.instance = Loading.service(options)
   }
 
-  static hide () {
+  static hide() {
     nextTick(() => {
       this.instance.close()
     })

@@ -12,7 +12,7 @@
 <script>
 // import { ServiceLoading } from '@/widgets/loading'
 export default {
-  mounted () {
+  mounted() {
     setTimeout(() => {
       // ServiceLoading.hide()
     }, 3000)

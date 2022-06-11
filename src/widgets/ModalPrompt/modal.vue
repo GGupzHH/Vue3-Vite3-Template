@@ -64,7 +64,7 @@ this.$ModalPrompt({
  */
 export default {
   name: 'ModalPrompt',
-  data () {
+  data() {
     return {
       visible: false,
       footer: {
@@ -73,15 +73,15 @@ export default {
     }
   },
   computed: {
-    getDialogAttrs () {
+    getDialogAttrs() {
       return {
         ...this.$options.propsData
       }
     },
-    getMessageIconClassName () {
-      return `el-icon-${this.getDialogAttrs.icon}`
+    getMessageIconClassName() {
+      return `el-icon-${ this.getDialogAttrs.icon }`
     },
-    getFooterAction () {
+    getFooterAction() {
       const { footer } = this.getDialogAttrs
       const cancel = Object.assign({
         label: this.getDialogAttrs.textClose,
@@ -107,23 +107,23 @@ export default {
       return actionList
     }
   },
-  created () {
+  created() {
   },
   methods: {
-    closeAction () {
+    closeAction() {
       this.visible = false
     },
-    handleCancel () {
+    handleCancel() {
       this.getDialogAttrs.onClose()
       this.visible = false
     },
-    async handleConfirm () {
+    async handleConfirm() {
       this.footer.confirmLoading = true
       await this.getDialogAttrs.onConfirm()
       this.footer.confirmLoading = false
       this.visible = false
     },
-    handleRealClosed () {
+    handleRealClosed() {
       document.body.removeChild(this.$el)
     }
   }

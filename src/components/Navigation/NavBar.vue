@@ -26,7 +26,7 @@ export default defineComponent({
   props: {
 
   },
-  setup () {
+  setup() {
 
     // this
     const { ctx } = getCurrentInstance()

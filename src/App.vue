@@ -64,7 +64,7 @@ export default {
   components: {
     // ElConfigProvider
   },
-  setup () {
+  setup() {
     return {
       ...useLanguage()
     }

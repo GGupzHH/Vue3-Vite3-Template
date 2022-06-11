@@ -36,8 +36,8 @@ import { useRoute } from 'vue-router'
 
 const replaceParams = (params, path) => {
   Object.keys(params).forEach(paramsItem => {
-    if (path.indexOf(`:${paramsItem}`) === -1) return
-    path = path.replace(`:${paramsItem}`, params[paramsItem])
+    if (path.indexOf(`:${ paramsItem }`) === -1) return
+    path = path.replace(`:${ paramsItem }`, params[paramsItem])
   })
   return path
 }
@@ -46,7 +46,7 @@ export default defineComponent({
   name: 'BreadCrumbs',
   components: {},
   props: {},
-  setup () {
+  setup() {
 
     const route = useRoute()
 

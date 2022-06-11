@@ -28,7 +28,7 @@ export default defineComponent({
       default: false
     }
   },
-  setup (props, context) {
+  setup(props, context) {
 
     // this
     const { ctx, proxy } = getCurrentInstance()

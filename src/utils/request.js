@@ -5,8 +5,8 @@ import { camelizeKeys, decamelizeKeys } from './camelCase'
 import Router from '../router/index'
 
 // redirect error
-function errorRedirect (url) {
-  Router.push(`/${url}`)
+function errorRedirect(url) {
+  Router.push(`/${ url }`)
 }
 // code Message
 const codeMessage = {
@@ -135,7 +135,7 @@ service.interceptors.response.use(
   }
 )
 
-export function sleep (time = 0) {
+export function sleep(time = 0) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({})
@@ -143,7 +143,7 @@ export function sleep (time = 0) {
   })
 }
 
-function extractFileNameFromContentDispositionHeader (value) {
+function extractFileNameFromContentDispositionHeader(value) {
   const patterns = [
     /filename\*=[^']+'\w*'"([^"]+)";?/i,
     /filename\*=[^']+'\w*'([^;]+);?/i,
@@ -168,7 +168,7 @@ function extractFileNameFromContentDispositionHeader (value) {
   return null
 }
 
-export function downloadFile (boldData, filename = 'shinewing', type) {
+export function downloadFile(boldData, filename = 'shinewing', type) {
   // TODO: https://blog.csdn.net/weixin_42142057/article/details/97655591
   const blob = boldData instanceof Blob
     ? boldData
@@ -186,7 +186,7 @@ export function downloadFile (boldData, filename = 'shinewing', type) {
   document.body.removeChild(link)
 }
 
-export function useResHeadersAPI (headers, resData) {
+export function useResHeadersAPI(headers, resData) {
   const disposition = headers['content-disposition']
   if (disposition) {
     let filename = ''

@@ -82,7 +82,7 @@ export default defineComponent({
     }
   },
   emits: ['update:modelValue', 'dayClick'],
-  setup (props) {
+  setup(props) {
 
     // this
     const { proxy } = getCurrentInstance()

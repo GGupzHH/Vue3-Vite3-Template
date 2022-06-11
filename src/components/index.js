@@ -8,7 +8,7 @@ import Navigation from 'comps/Navigation/index.vue'
 import Tooltip from 'comps/Tooltip.vue'
 
 const component = {
-  install: function (app) {
+  install: function(app) {
     app.component(IconFont.name, IconFont)
     app.component(OptionsMenu.name, OptionsMenu)
     app.component(Calendar.name, Calendar)
