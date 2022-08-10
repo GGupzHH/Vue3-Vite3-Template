@@ -36,7 +36,7 @@
     "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-vue": "^8.7.1",
     "node-sass": "^7.0.1",
-    "sass": "^1.54.3",
+    "sass": "^1.54.4",
     "sass-loader": "12.4.0",
     "style-resources-loader": "^1.5.0",
     "vite": "2.7.1",
